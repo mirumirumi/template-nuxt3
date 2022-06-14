@@ -1,9 +1,6 @@
 import { defineNuxtConfig } from "nuxt"
 
 export default defineNuxtConfig({
-  alias: {
-    "@": "/src",
-  },
   app: {
     baseURL: "/",  // can override by NUXT_APP_BASE_URL
     buildAssetsDir: "_nuxt",
