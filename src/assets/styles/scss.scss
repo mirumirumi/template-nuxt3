@@ -1,0 +1,311 @@
+/**
+ * vars
+ */
+$text                       : #4e4e4e;
+$text_white                 : #f2f2f2;
+$text_white_hover           : #e3e3e3;
+$background                 : #fffcf9;
+$primary                    : #ec6839;
+$primary_hover              : #e26234;
+$link                       : #bb0000;
+$form-feedback-invalid-color: #dc3545;
+
+
+/**
+ * mixin
+ */
+ @mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+
+/**
+ * globals
+ */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Open Sans", Helvetica, "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana, sans-serif;
+}
+p a, span a, li a {
+  color: $link;
+}
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img, svg {
+  vertical-align: middle;
+}
+textarea {
+  font-family: inherit;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+}
+input:focus-visible,
+button:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+.form-control {  // あとで一括クラス名置換したい、「form」とかでいいか？
+  display: block;
+  width: 100%;
+  padding: 0.375em 0.75em;
+  color: $text;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 5px;
+  transition: all 0.13s ease-in-out;
+  &:focus {
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+  }
+  &:disabled, &[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+}
+label {
+  display: inline-block;
+  .form-check-input[disabled] ~ & {
+    opacity: 0.5;
+  }
+}
+.form-label {
+  margin-bottom: 0.5rem;
+}
+.form-check {
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.7em;
+  margin-bottom: 0.125rem;
+  .form-check-input {
+    float: left;
+    margin-left: -1.7em;  
+  }
+}
+.form-check-input {
+  width: 1em;
+  height: 1em;
+  margin-top: 0.25em;
+  font-size: inherit;
+  vertical-align: top;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  appearance: none;
+  transition: all 0.05s ease-in-out;
+  &[type="radio"] {
+    border-radius: 50%;
+  }
+  &:checked {
+    border-color: $primary;
+    background-color: $primary;
+  }
+  &:checked[type="radio"] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+  }
+  &:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: 0.5;
+  }
+}
+.invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important;
+}
+.display_none {
+  display: none;
+}
+@include mobile {
+  .display_none_mobile {
+    display: none;
+  }  
+}
+.dropdown-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin: 5.5px 0 0 36px;
+  vertical-align: middle;
+  content: "";
+  border-style: solid;
+  border-width: 4.7px 4.7px 0;
+  border-top-color: #838383;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 16px;
+}
+::-webkit-scrollbar-thumb {
+  border: 3.5px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: #d4d0d2;
+}
+
+/**
+ * modal series
+ */
+.notify_and_button {
+  padding: 0.9em 1.3em 0.5em !important;
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin: 0.3em auto 0.9em;
+    font-weight: bold;
+    .icon {
+      width: 1.7em;
+      svg {
+        position: relative;
+      }
+    }
+    span {
+      display: inline-block;
+      color: #787878;
+      font-size: 0.95em;
+      line-height: 1.3;
+    }
+  }
+  .content {
+    margin: 0.3em auto 0.9em;
+  }
+  .buttons {
+    padding-top: 5px;
+    text-align: right;
+    font-size: 0.9em;
+    border-top: 1px solid #d0d7de;
+    button {
+      margin: 0.3em 0em 0.3em 0.7em;
+      padding: 0.45em 1.5em 0.3em;
+      font-weight: bold;
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-top: -3px;
+      }
+    }
+    .btn-text-only {
+      color: #787878;
+    }
+  }
+  > svg {
+    display: none;
+  }
+}
+
+/**
+ * parts
+ */
+.margin_top_30 {
+  margin-top: 30px;
+}
+
+/**
+ * vue transition
+ */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.13s ease-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 0.666;
+}
+
+.move-move {
+  transition: transform 0.19s ease-out;
+}
+.move-enter-active,
+.move-leave-active {
+  transition: opacity 0.13s ease-out;
+}
+.move-leave-active {
+  position: absolute;
+}
+.move-enter-from,
+.move-leave-to {
+  opacity: 0;
+}
+
+.move2-move {
+  transition: transform 0.19s ease-out;
+}
+.move2-enter-active,
+.move2-leave-active {
+  transition: opacity 0.13s ease-out;
+}
+.move2-leave-active {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.move2-enter-from,
+.move2-leave-to {
+  opacity: 0;
+}
+
+.howan-enter-active,
+.howan-leave-active {
+  transition: all 0.1s cubic-bezier(.17,.67,.67,.99);
+}
+.howan-enter-from,
+.howan-leave-to {
+  opacity: 0;
+  transform: scale(0.93);
+}
+.howan-enter-to,
+.howan-leave-from {
+  opacity: 0.777;
+  transform: scale(1);
+}
+
+.loading-enter-active,
+.loading-leave-active {
+  transition: opacity 0.23s ease-out;
+}
+.loading-enter-from,
+.loading-leave-to {
+  opacity: 0;
+}
+.loading-enter-to,
+.loading-leave-from {
+  opacity: 1;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.13s ease-out;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translate(100vw, 0px);
+}
+.slide-enter-to,
+.slide-leave-from {
+  transform: translate(0px, 0px);
+}
+ 
