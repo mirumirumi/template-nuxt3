@@ -22,11 +22,11 @@ watch(p, () => {
 
 function setViewBox(): void {
   switch (p.icon) {
+    case "":
+      viewBox.value = "0 0 512 512"
+      break
     case "close":
       viewBox.value = "0 0 320 512"
-      break
-   case "":
-      viewBox.value = "0 0 512 512"
       break
   }
 }
