@@ -1,6 +1,6 @@
 <template>
   <button type="button" :id="_id" class="btn" :class="{ 'btn-primary': type === 'fill', 'btn-outline-primary': type === 'outline', 'btn-text-only': type === 'text', 'auto_width': isAutoWidth }" @click.prevent=";" :disabled="isSubmitting || disabled">
-    <LoadSpinner v-if="isSubmitting" :color="spinnerColor ? spinnerColor : '#fff'" />
+    <PartsLoadSpinner v-if="isSubmitting" :color="spinnerColor ? spinnerColor : '#fff'" />
     <slot v-else></slot>
   </button>
 </template>
@@ -8,7 +8,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref } from "vue"
 import { v4 as uuidv4 } from "uuid"
-import LoadSpinner from "@/components/parts/LoadSpinner.vue"
 
 const p = defineProps<{
   type: "fill" | "outline" | "text",
@@ -33,7 +32,7 @@ onMounted(async () => {
 })
 
 const isAutoWidth = computed(() => {
-  return !width.value.includes('undefined')
+  return !width.value.includes("undefined")
 })
 </script>
 
@@ -70,8 +69,7 @@ const isAutoWidth = computed(() => {
   border-color: $primary;
   background-color: $primary;
   &:hover {
-    border-color: #ad0e38;
-    background-color: #ad0e38;
+    filter: saturate(0.85);
   }
 }
 .btn-outline-primary {

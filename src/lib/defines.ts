@@ -1,1 +1,1 @@
-// typing and constants
+// constants and typings

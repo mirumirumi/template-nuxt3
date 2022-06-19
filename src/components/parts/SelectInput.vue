@@ -9,16 +9,15 @@
         {{ item }}
       </li>
     </ul>
-    <teleport to="body">
-      <TransparentBack v-if="isSelecting" @click="closeSelections" />
-    </teleport>
+    <Teleport to="body">
+      <PartsTransparentBack v-if="isSelecting" @click="closeSelections" />
+    </Teleport>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from "vue"
 import { v4 as uuidv4 } from "uuid"
-import TransparentBack from "./TransparentBack.vue"
 
 const p = defineProps<{
   items: Array<string>,

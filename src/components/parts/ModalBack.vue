@@ -13,8 +13,7 @@
   bottom: 0;
   left: 0;
   display: block;
-  background-color: #000000;
-  opacity: 0.5;
+  background-color: #00000080;
   cursor: default;
   z-index: 1;
 }

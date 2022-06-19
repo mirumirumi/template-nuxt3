@@ -14,7 +14,7 @@ $form-feedback-invalid-color: #dc3545;
 /**
  * mixin
  */
- @mixin mobile {
+@mixin mobile {
   @media screen and (max-width: 768px) {
     @content;
   }
@@ -30,8 +30,13 @@ $form-feedback-invalid-color: #dc3545;
 html, body {
   margin: 0;
   padding: 0;
-  font-size: 16px;
-  font-family: "Open Sans", Helvetica, "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana, sans-serif;
+  font-size: 18px;
+  font-family: "Custom Noto Sans", "Open Sans", Helvetica, "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana, sans-serif;
+  color: $text;
+  background-color: $background;
+  @include mobile {
+    font-size: 16px;
+  }  
 }
 p a, span a, li a {
   color: $link;
@@ -56,22 +61,25 @@ button:focus-visible,
 textarea:focus-visible {
   outline: none;
 }
-.form-control {  // あとで一括クラス名置換したい、「form」とかでいいか？
+.input {
   display: block;
   width: 100%;
   padding: 0.375em 0.75em;
-  color: $text;
+  color: #5b5b5b;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1.1px solid #e2dcd3;
   appearance: none;
   border-radius: 5px;
-  transition: all 0.13s ease-in-out;
+  transition: all 0.17s ease-out;
   &:focus {
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    // border-color: #a3c0e1;
+    // box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    border-color: #e9b18d;
+    box-shadow: 0 0 0 0.19rem rgba(237, 120, 45, 0.37);
   }
   &:disabled, &[readonly] {
     background-color: #e9ecef;
@@ -225,7 +233,7 @@ label {
  */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.13s ease-out;
+  transition: opacity 0.03s ease-out;
 }
 .fade-enter-from,
 .fade-leave-to {
@@ -233,6 +241,40 @@ label {
 }
 .fade-enter-to,
 .fade-leave-from {
+  opacity: 0.666;
+}
+
+.howan-enter-active,
+.howan-leave-active {
+  transition: all 0.1s cubic-bezier(.17,.67,.67,.99);
+}
+.howan-enter-from,
+.howan-leave-to {
+  opacity: 0;
+  transform: scale(0.93);
+}
+.howan-enter-to,
+.howan-leave-from {
+  opacity: 0.666;
+  transform: scale(1);
+}
+
+.fadedown-enter-active,
+.fadedown-leave-active {
+  transition: all 0.13s cubic-bezier(.1,.88,.82,.99);
+}
+.fadedown-enter-from {
+  opacity: 0;
+  transform: translateY(-27px);
+}
+.fadedown-leave-to {
+  opacity: 0;
+}
+.fadedown-enter-to {
+  opacity: 0.666;
+  transform: translateY(0px);
+}
+.fadedown-leave-from {
   opacity: 0.666;
 }
 
@@ -251,51 +293,6 @@ label {
   opacity: 0;
 }
 
-.move2-move {
-  transition: transform 0.19s ease-out;
-}
-.move2-enter-active,
-.move2-leave-active {
-  transition: opacity 0.13s ease-out;
-}
-.move2-leave-active {
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-.move2-enter-from,
-.move2-leave-to {
-  opacity: 0;
-}
-
-.howan-enter-active,
-.howan-leave-active {
-  transition: all 0.1s cubic-bezier(.17,.67,.67,.99);
-}
-.howan-enter-from,
-.howan-leave-to {
-  opacity: 0;
-  transform: scale(0.93);
-}
-.howan-enter-to,
-.howan-leave-from {
-  opacity: 0.777;
-  transform: scale(1);
-}
-
-.loading-enter-active,
-.loading-leave-active {
-  transition: opacity 0.23s ease-out;
-}
-.loading-enter-from,
-.loading-leave-to {
-  opacity: 0;
-}
-.loading-enter-to,
-.loading-leave-from {
-  opacity: 1;
-}
-
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 0.13s ease-out;
@@ -308,4 +305,27 @@ label {
 .slide-leave-from {
   transform: translate(0px, 0px);
 }
- 
+
+/**
+ * fonts
+ */
+ @font-face {
+  font-family: "Custom Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("NotoSansCJKjp-Regular.otf"),
+       local("NotoSansJP-Regular.otf"),
+       url("@/assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.woff2") format("woff2");
+  // unicode-range: U+000-5FF;
+}
+@font-face {
+  font-family: "Custom Noto Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("NotoSansCJKjp-Bold.otf"),
+       local("NotoSansJP-Bold.otf"),
+       url("@/assets/fonts/Noto_Sans_JP/NotoSansJP-Bold.woff2") format("woff2");
+  // unicode-range: U+000-5FF;
+}

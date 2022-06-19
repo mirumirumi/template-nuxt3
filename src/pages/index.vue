@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root">
 
   </div>
 </template>
@@ -7,10 +7,6 @@
 <script setup lang="ts">
 const router = useRouter()  // same for navigateTo()
 
-definePageMeta({
-  title: "",
-  // middleware: ["navigation-guards"],
-})
 
 
 
@@ -18,8 +14,13 @@ definePageMeta({
 
 
 
+// definePageMeta({
+//   middleware: ["navigation-guards"],
+// })
 </script>
 
 <style lang="scss" scoped>
-
+.root {
+  
+}
 </style>
