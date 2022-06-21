@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref } from "vue"
 import { v4 as uuidv4 } from "uuid"
 
 const p = defineProps<{
