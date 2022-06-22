@@ -42,14 +42,14 @@ export default defineNuxtConfig({
       "@/composables",
     ],
   },
+  buildModules: [
+    "@pinia/nuxt",  // what does it mean?
+  ],
   components: {
     dirs: [
       "@/components",
     ],
   },
-  css: [
-    "@/assets/styles/scss.scss",
-  ],
   nitro: {
     srcDir: "src/",
   },
@@ -68,5 +68,19 @@ export default defineNuxtConfig({
   ssr: true,
   typescript: {
     strict: true,
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/styles/scss.scss"; @import "@/assets/styles/content.scss";',
+        },
+      },
+    },
+    server: {
+      watch: {
+        usePolling: true,  // maybe only in WSL2
+      },
+    },
   },
 })
