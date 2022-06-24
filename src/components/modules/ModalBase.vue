@@ -26,8 +26,14 @@ const emit = defineEmits<{
 const isOpenModalBack = ref(true)
 
 onMounted(() => {
-  ; (document.getElementsByTagName("body")[0] as HTMLBodyElement).classList.add("modal")
+  if (isOverThanScreen()) {
+    ; (document.getElementsByTagName("body")[0] as HTMLBodyElement).classList.add("modal")
+  }
 })
+
+function isOverThanScreen(): boolean {
+  return document.documentElement.clientHeight < (document.getElementsByTagName("body")[0] as HTMLBodyElement).offsetHeight
+}
 
 const clickedToCloseModal = (e: any = null) => {
   if (e.target.id === "modal_body")
