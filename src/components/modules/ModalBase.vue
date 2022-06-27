@@ -106,8 +106,12 @@ onUnmounted(() => {
 </style>
 <style lang="scss">
 body.modal {
-  overflow: hidden;
+  overflow-y: hidden;
   padding-right: 17px;
+  @include mobile {
+    overflow-y: auto;
+    padding-right: 0;
+  }
 }
 .modal_base {
   .modal_body {
