@@ -19,8 +19,8 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    "no-console": process.env.NODE_ENV === "prd" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "prd" ? "warn" : "off",
+    "no-console": process.env.NODE_ENV === "production" ? "off" : "warn",
+    "no-debugger": process.env.NODE_ENV === "production" ? "off" : "warn",
     "no-useless-escape": 0,
     "no-irregular-whitespace": 0,
     "@typescript-eslint/no-extra-semi": 0,
