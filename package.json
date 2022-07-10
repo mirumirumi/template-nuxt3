@@ -3,10 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "nuxt dev",
+        "dev": "nuxt dev --port 8080",
         "build": "nuxt build",
-        "generate-dev": "NODE_ENV=dev nuxt generate",
-        "generate-prd": "NODE_ENV=prd nuxt generate",
+        "generate": "nuxt generate",
         "preview": "nuxt preview"
     },
     "dependencies": {
