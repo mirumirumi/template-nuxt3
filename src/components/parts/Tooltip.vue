@@ -1,5 +1,5 @@
 <template>
-  <div class="tooltip" :class="{ 'auto_width': isAutoWidth, 'ws_normal': isDecidedWidth, 'above': isAbove, 'below': isBelow }" :ref="'tooltip'">
+  <div class="tooltip" :class="{ 'auto_width': isAutoWidth, 'ws_normal': isDecidedWidth, 'above': isAbove, 'below': isBelow }" ref="tooltip">
     <slot></slot>
   </div>
 </template>

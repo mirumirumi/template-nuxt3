@@ -1,26 +1,17 @@
 <template>
-  <div class="index">
+  <div class="index_view">
 
   </div>
 </template>
 
 <script setup lang="ts">
-const router = useRouter()  // same for navigateTo()
 
 
 
-
-
-
-
-
-// definePageMeta({
-//   middleware: ["navigation-guards"],
-// })
 </script>
 
 <style lang="scss" scoped>
-.root {
+.index_view {
   
 }
 </style>

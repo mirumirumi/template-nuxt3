@@ -91,8 +91,8 @@ onUnmounted(() => {
     width: 95%;
     max-width: 555px;
     padding: 1.5em 1.9em 1.9em;
-    color: $text;
-    background-color: $background;
+    color: var(--color-text);
+    background-color: var(--color-background);
     box-shadow: 1px 3px 5px rgba(#636363, 0.666);
     border-radius: 7px;
     svg {
@@ -107,7 +107,11 @@ onUnmounted(() => {
 <style lang="scss">
 body.modal {
   overflow-y: hidden;
-  padding-right: 17px;
+  padding-right: 16px;
+  @include tablet {
+    overflow-y: auto;
+    padding-right: 0;
+  }
   @include mobile {
     overflow-y: auto;
     padding-right: 0;

@@ -3,30 +3,29 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "nuxt dev --port 8080",
+        "dev": "nuxt dev",  // npm run dev -- --port=17329
         "build": "nuxt build",
         "generate": "nuxt generate",
         "preview": "nuxt preview"
     },
     "dependencies": {
-        "@pinia/nuxt": "^0.1.9",
+        "@vueuse/core": "^8.9.3",
         "eslint": "^6.7.2",
-        "nuxt": "^3.0.0-rc.4",
-        "pinia": "^2.0.11",
+        "lodash": "^4.17.21",
         "sass": "^1.52.3",
         "typescript": "^4.7.3",
         "uuid": "^8.3.2",
         "vue": "^3.2.33",
+        "vue-gtag": "^2.0.1",
         "vue-toastification": "^2.0.0-rc.5"
     },
     "devDependencies": {
-        "@types/jest": "^24.0.19",
+        "@types/lodash": "^4.14.182",
         "@types/uuid": "^8.3.4",
         "@typescript-eslint/eslint-plugin": "^4.18.0",
         "@typescript-eslint/parser": "^4.18.0",
         "acorn": "^8.7.1",
-        "node-sass": "^7.0.1",
-        "sass-loader": "^13.0.0",
+        "nuxt": "^3.0.0-rc.6",
         "webpack": "^5.73.0"
     }
 }

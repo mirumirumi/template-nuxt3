@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-
 const p = withDefaults(defineProps<{
   zIndex?: number
 }>(), {

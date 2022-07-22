@@ -3,7 +3,6 @@ import { defineNuxtConfig } from "nuxt"
 export default defineNuxtConfig({
   app: {
     baseURL: "/",  // can override by NUXT_APP_BASE_URL
-    buildAssetsDir: "_nuxt",
     head: {
       charset: "utf-8",
       meta: [
@@ -13,12 +12,12 @@ export default defineNuxtConfig({
         { name: "robots", content: "max-image-preview:large" },
         { name: "description", content: "" },
         { name: "keywords", content: "" },
-        { name: "thumbnail", content: "/main-visual.png" },
+        { name: "thumbnail", content: "/assets/main-visual.png" },
         { property: "og:type", content: "" },
         { property: "og:description", content: "" },
         { property: "og:title", content: "" },
         { property: "og:url", content: "" },
-        { property: "og:image", content: "/main-visual.png" },
+        { property: "og:image", content: "/assets/main-visual.png" },
         { property: "og:site_name", content: "" },
         { property: "og:locale", content: "ja_JP" },
         { property: "og:app_id", content: "" },
@@ -27,10 +26,10 @@ export default defineNuxtConfig({
         { property: "twitter:description", content: "" },
         { name: "twitter:domain", content:  },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:image", content: "/main-visual.png" },
+        { name: "twitter:image", content: "/assets/main-visual.png" },
       ],
       link: [
-        { rel: "icon", href: "/maru.png" },
+        { rel: "icon", href: "/assets/maru.png" },
         { rel: "canonical", href:  },
       ],
       style: [],
@@ -42,9 +41,6 @@ export default defineNuxtConfig({
       "@/composables",
     ],
   },
-  buildModules: [
-    "@pinia/nuxt",  // what does it mean?
-  ],
   components: {
     dirs: [
       "@/components",
@@ -52,18 +48,11 @@ export default defineNuxtConfig({
   },
   nitro: {
     srcDir: "src/",
+    // prerender: {  // for SSR + SSG
+    //   routes: []
+    // },
   },
   pages: true,
-  runtimeConfig: {  // fallback defaults
-    api: {
-      endpointBaseUrl: "",
-      key: "",
-    },
-    externalApi: {
-      secret: "",  
-    },
-    // anything under public and app will be exposed to the frontend
-  },
   srcDir: "src/",
   ssr: true,
   telemetry: false,
@@ -74,7 +63,10 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/styles/scss.scss"; @import "@/assets/styles/content.scss";',
+          additionalData: `
+            @import "@/assets/styles/scss.scss";
+            @import "@/assets/styles/scss-dark.scss";
+          `,
         },
       },
     },
