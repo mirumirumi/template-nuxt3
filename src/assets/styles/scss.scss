@@ -236,6 +236,19 @@ label {
 /**
  * vue transition
  */
+.page-enter-from {  // `page` is reserved by nuxt3 for page transitions
+  opacity: 0;
+  transform: translateY(7px);
+}
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.11s ease-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.07s ease-out;
@@ -246,41 +259,26 @@ label {
 }
 .fade-enter-to,
 .fade-leave-from {
-  opacity: 0.666;
-}
-
-.howan-enter-active,
-.howan-leave-active {
-  transition: all 0.1s cubic-bezier(.17,.67,.67,.99);
-}
-.howan-enter-from,
-.howan-leave-to {
-  opacity: 0;
-  transform: scale(0.93);
-}
-.howan-enter-to,
-.howan-leave-from {
-  opacity: 0.666;
-  transform: scale(1);
+  opacity: 1;
 }
 
 .fadedown-enter-active,
 .fadedown-leave-active {
-  transition: all 0.13s cubic-bezier(.1,.88,.82,.99);
+  transition: all 0.2s ease;
 }
 .fadedown-enter-from {
   opacity: 0;
-  transform: translateY(-27px);
+  transform: translateY(-23px);
 }
 .fadedown-leave-to {
   opacity: 0;
 }
 .fadedown-enter-to {
-  opacity: 0.666;
+  opacity: 1;
   transform: translateY(0px);
 }
 .fadedown-leave-from {
-  opacity: 0.666;
+  opacity: 1;
 }
 
 .move-move {
