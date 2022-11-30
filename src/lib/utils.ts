@@ -26,19 +26,3 @@ export const friendlyDatetime = (isoformat: string): string => {
   const date = new Date(isoformat)
   return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
 }
-
-// こっから下はたぶんlodashに全部あるので置き換えるようにする
-
-export const deepCopy = (data: Record<string, unknown>): Record<string, unknown> => {
-  return JSON.parse(JSON.stringify(data))
-}
-
-export function isEmpty(obj: Record<string, unknown>): boolean {
-  return !Object.keys(obj).length
-}
-
-export function isSameObjects(_a: Record<string, unknown>, _b: Record<string, unknown>): boolean {
-  const _aJSON = JSON.stringify(Object.entries(_a).sort())
-  const _bJSON = JSON.stringify(Object.entries(_b).sort())
-  return _aJSON === _bJSON
-}
