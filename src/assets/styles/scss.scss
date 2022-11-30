@@ -1,52 +1,63 @@
 /**
- * vars
- */
-$text                       : #4e4e4e;
-$text_white                 : #f2f2f2;
-$text_white_hover           : #e3e3e3;
-$background                 : #fffcf9;
-$primary                    : #ec6839;
-$primary_hover              : #e26234;
-$link                       : #bb0000;
-$form-feedback-invalid-color: #dc3545;
-
-
-/**
  * mixin
  */
 @mixin mobile {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 428px) {  // iPhone 12 Pro Max
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 1024px) {
+    --width-sidebar: 250px;
     @content;
   }
 }
 
-
 /**
  * common
  */
+:root {
+  --color-text              : #4e4e4e;
+  --color-text-white        : #f2f2f2;
+  --color-text-white-hover  : #e3e3e3;
+  --color-background        : #fffcf9;
+  --color-primary           : #ec6839;
+  --color-link              : #bb0000;
+  --color-invalid           : #dc3545;
+  --color-input-focus-border: #e9b18d;
+  --color-input-focus-shadow: 0 0 0 0.19rem rgba(237, 120, 45, 0.37);
+  --width-max-base          : 1188px;
+  --width-scrollbar         : 16px;
+  --width-max-screen        : calc(var(--width-max-base) - var(--width-scrollbar));
+  --width-sidebar           : 331px;
+}
 * {
   box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 html, body {
   margin: 0;
   padding: 0;
   font-size: 18px;
   font-family: "Custom Noto Sans", "Open Sans", Helvetica, "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana, sans-serif;
-  color: $text;
-  background-color: $background;
+  color: var(--color-text);
+  background-color: var(--color-background);
   @include mobile {
     font-size: 16px;
   }  
 }
-p a, span a, li a {
-  color: $link;
+p a,
+span a,
+li a,
+table a {
+  color: var(--color-link);
 }
 ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-img, svg {
+img {
   vertical-align: middle;
 }
 textarea {
@@ -78,8 +89,8 @@ textarea:focus-visible {
   &:focus {
     // border-color: #a3c0e1;
     // box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
-    border-color: #e9b18d;
-    box-shadow: 0 0 0 0.19rem rgba(237, 120, 45, 0.37);
+    border-color: var(--color-input-focus-border);
+    box-shadow: var(--color-input-focus-shadow);
   }
   &:disabled, &[readonly] {
     background-color: #e9ecef;
@@ -122,8 +133,8 @@ label {
     border-radius: 50%;
   }
   &:checked {
-    border-color: $primary;
-    background-color: $primary;
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
   }
   &:checked[type="radio"] {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
@@ -161,7 +172,7 @@ label {
   border-bottom-color: transparent;
 }
 ::-webkit-scrollbar {
-  width: 16px;
+  width: var(--width-scrollbar);
 }
 ::-webkit-scrollbar-thumb {
   border: 3.5px solid rgba(0, 0, 0, 0);
@@ -236,7 +247,7 @@ label {
 /**
  * vue transition
  */
-.page-enter-from {  // `page` is reserved by nuxt3 for page transitions
+.page-enter-from {  // not used now (disabled by nuxt.config.ts)
   opacity: 0;
   transform: translateY(7px);
 }
@@ -278,6 +289,19 @@ label {
   transform: translateY(0px);
 }
 .fadedown-leave-from {
+  opacity: 1;
+}
+
+.tooltip-enter-active,
+.tooltip-leave-active {
+  transition: opacity 0.11s ease-out;
+}
+.tooltip-enter-from,
+.tooltip-leave-to {
+  opacity: 0;
+}
+.tooltip-enter-to,
+.tooltip-leave-from {
   opacity: 1;
 }
 
