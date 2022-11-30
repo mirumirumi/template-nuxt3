@@ -1,6 +1,6 @@
 <template>
   <div class="index_view">
-
+    
   </div>
 </template>
 
