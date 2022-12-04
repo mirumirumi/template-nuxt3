@@ -14,6 +14,10 @@ const p = defineProps<{
   icon: string,
   color: string,
   dark?: string,
+  hover?: {
+    on: boolean,
+    color: string,
+  },
 }>()
 
 const color = ref(p.color)
@@ -32,6 +36,14 @@ watch(theme, () => {
     color.value = p.color
   }
 })
+
+watch(p, () => {
+  if (p.hover?.on) {
+    color.value = p.hover.color
+  } else {
+    color.value = p.color
+  }
+}, { deep: true })
 
 function setViewBox(): void {
   switch (p.icon) {
@@ -53,5 +65,8 @@ svg {
   bottom: 0;
   margin: auto;
   width: 1.1em;
+  path {
+    transition: 0.29s all ease;
+  }
 }
 </style>
