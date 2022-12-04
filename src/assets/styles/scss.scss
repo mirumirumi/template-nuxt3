@@ -96,6 +96,9 @@ textarea:focus-visible {
     background-color: #e9ecef;
     opacity: 1;
   }
+  &::placeholder {
+    font-family: "Custom Noto Sans", "Open Sans", Helvetica, "Lucida Sans Unicode", "Lucida Grande", Arial, Verdana, sans-serif;
+  }
 }
 label {
   display: inline-block;
