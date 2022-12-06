@@ -112,13 +112,13 @@ function tabindexToId(to: number, maxlength: number): string {
     color: var(--color-text);
     font-size: 1em;
     line-height: 1.5;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     appearance: none;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     cursor: pointer;
-    .dropdown-caret {
+    .dropdown_caret {
       position: absolute;
       top: 2.1px;
       bottom: 0;
@@ -142,7 +142,7 @@ function tabindexToId(to: number, maxlength: number): string {
     max-height: 200px;
     border: solid 1.9px #c9c9c9;
     border-radius: 0.25rem;
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.19);
     overflow-y: auto;
     z-index: 14;
