@@ -1,6 +1,6 @@
 <template>
   <div class="select_input">
-    <button type="button" class="select_button" :class="{ 'invalid': _isInvalid }" @click="toggleIsSelecting(); disableInavalid()">
+    <button type="button" class="select_button" :class="{ 'invalid': _isInvalid }" @click="toggleIsSelecting(); disableInvalid()">
       {{ currentItem }}
       <span class="dropdown_caret"></span>
     </button>
@@ -42,7 +42,7 @@ watch(p, () => {
   _isInvalid.value = p.isInvalid
 })
 
-const disableInavalid = () => {
+const disableInvalid = () => {
   _isInvalid.value = false
   emit("disableInvalid")
 }
