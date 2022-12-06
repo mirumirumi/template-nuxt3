@@ -2,7 +2,7 @@
   <div class="select_input">
     <button type="button" class="select_button" :class="{ 'invalid': _isInvalid }" @click="toggleIsSelecting(); disableInavalid()">
       {{ currentItem }}
-      <span class="dropdown-caret"></span>
+      <span class="dropdown_caret"></span>
     </button>
     <ul v-show="isSelecting">
       <li v-for="item, index in items" @click="decideSelect(item)" :id="'item_' + uuid + '_' + index" @keydown.prevent="selectWithKeys($event, item)" tabindex="-1" :key="item">
@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from "uuid"
 
 const p = defineProps<{
   items: Array<string>,
-  current: string,
+  current: string | null,
   width?: string,
   isDisable?: boolean,
   isInvalid?: boolean,
