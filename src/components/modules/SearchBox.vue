@@ -10,46 +10,24 @@
 
 <script setup lang="ts">
 const p = defineProps<{
-  query?: string,
+  query?: string
 }>()
 
 const emit = defineEmits<{
-  (e: "closeSearchBox"): void,
+  (e: "closeSearchBox"): void
 }>()
 
 const router = useRouter()
 const query = ref("")
 const search = ref()
 
-onMounted(() => {
-  if (router.currentRoute.value.path.includes("/search")) {
-    query.value = p.query ?? ""
-  } else if (query.value === "") {
-    if (!isIOS()) {
-      search.value.focus()
-    }
-  }
-})
-
-watch(p, () => {
+watch(() => p.query, () => {
   query.value = p.query ?? ""
 })
 
 const move = () => {
   router.push({ path: "/search", query: { q: query.value } })
   emit("closeSearchBox")
-}
-
-function isIOS(): boolean {
-  // https://bit.ly/2D2QKav
-  return [
-    "iPad Simulator",
-    "iPhone Simulator",
-    "iPod Simulator",
-    "iPad",
-    "iPhone",
-    "iPod"
-  ].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 </script>
 
